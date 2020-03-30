@@ -422,10 +422,10 @@ export default class Dashboard extends React.Component {
                   <Text style={styles.sensorField}>Pasos:</Text>
                   <Text style={styles.sensorField}>{this.state.steps}</Text>
                 </View>
-                <View style={styles.package}>
+                {/*<View style={styles.package}>
                   <Text style={styles.sensorField}>Calorias:</Text>
                   <Text style={styles.sensorField}>{promedio}</Text>
-                </View>
+                </View>*/}
 
                 <View></View>
 
@@ -527,24 +527,25 @@ export default class Dashboard extends React.Component {
                       </Text>
                     </TouchableOpacity>
                   )}
-                  <View style={styles.spacing} />
-                  <View>
-                    <TextInput
-                      style={{
-                        height: 40,
-                        borderColor: "gray",
-                        borderWidth: 1
-                      }}
-                      onChangeText={text => this.setState({ input: text })}
-                    />
-                    <Text>{"Alimentos: " + this.state.input}</Text>
-                  </View>
                   {/*PDF */}
 
-                  {/*<View style={styles.spacing} />
+                  <View style={styles.spacing} />
                   <View>
                     <Dashboards />
-                  </View>*/}
+                  </View>
+                </View>
+
+                <View style={styles.spacing} />
+                <View>
+                  <TextInput
+                    style={{
+                      height: 40,
+                      borderColor: "gray",
+                      borderWidth: 1
+                    }}
+                    onChangeText={text => this.setState({ input: text })}
+                  />
+                  <Text>{"Alimentos: " + this.state.input}</Text>
                 </View>
               </Animated.View>
 

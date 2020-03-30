@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   PermissionsAndroid,
+  Button,
   Platform
 } from "react-native";
 import RNHTMLtoPDF from "react-native-html-to-pdf";
@@ -156,9 +157,10 @@ export default class Example extends Component {
   }
   render() {
     return (
-      <View style={styles.MainContainer}>
-        <TouchableOpacity onPress={this.askPermission.bind(this)}>
+      <View style={styles.container}>
+        {/* <TouchableOpacity onPress={this.askPermission.bind(this)}>
           <View>
+            
             <Image
               //We are showing the Image from online
               source={{
@@ -171,7 +173,12 @@ export default class Example extends Component {
             />
             <Text style={styles.text}>Crear reporte</Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
+        <Button
+          title="Crear reporte"
+          onPress={this.askPermission.bind(this)}
+          color="#33AFFF"
+        />
         <Text style={styles.text}>{this.state.filePath}</Text>
       </View>
     );
@@ -187,7 +194,7 @@ const styles = StyleSheet.create({
     borderColor: "#000"
   },
   text: {
-    color: "white",
+    color: "black",
     textAlign: "center",
     fontSize: 25,
     marginTop: 16
