@@ -29,6 +29,8 @@ import com.swmansion.rnscreens.RNScreensPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 // react-native-svg
 import com.horcrux.svg.SvgPackage;
+// react-native-vector-icons
+import com.oblador.vectoricons.VectorIconsPackage;
 // react-native-webview
 import com.reactnativecommunity.webview.RNCWebViewPackage;
 
@@ -72,6 +74,7 @@ public class PackageList {
       new RNScreensPackage(),
       new SplashScreenReactPackage(),
       new SvgPackage(),
+      new VectorIconsPackage(),
       new RNCWebViewPackage()
     ));
   }

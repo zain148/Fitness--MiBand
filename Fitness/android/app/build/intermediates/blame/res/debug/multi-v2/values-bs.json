@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/binaryoverload/React-Native/Fitness/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bs/values-bs.xml",
+            "outputFile": "/home/binaryoverload/React-Native/Fitness--MiBand/Fitness/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bs/values-bs.xml",
             "map": [
                 {
                     "source": "/home/binaryoverload/.gradle/caches/transforms-2/files-2.1/5802d72771d6aeae189f8a94ebba2419/res/values-bs/values.xml",

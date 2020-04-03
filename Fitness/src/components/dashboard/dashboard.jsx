@@ -16,7 +16,6 @@ import {
 import { LineChart, ProgressChart } from "react-native-chart-kit";
 import { ScrollView, Dimensions } from "react-native";
 import styles from "./styles.jsx";
-import Dashboards from "./dashboard.js";
 import { Table, Row, Rows } from "react-native-table-component";
 import { createBottomTanNavigator } from "react-navigation";
 import HTML from "react-native-render-html";
@@ -24,12 +23,6 @@ import { RNHTMLtoPDF } from "react-native-html-to-pdf";
 import PDFLib, { PDFDocument, PDFPage } from "react-native-pdf-lib";
 
 import { Mediciones } from "./mediciones";
-
-/*var dataGraphics = Array.apply(null, new Array(10)).map(
-  Number.prototype.valueOf,
-  0
-);*/
-//var values1=[]
 
 const { width } = Dimensions.get("window");
 

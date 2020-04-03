@@ -84,5 +84,13 @@ export default styles = StyleSheet.create({
     color: "white",
     textAlign: "center",
     paddingTop: 7
+  },
+  scrollContainer: {
+    flex: 1,
+    paddingHorizontal: 15
+  },
+  scrollContentContainer: {
+    paddingTop: 40,
+    paddingBottom: 10
   }
 });
