@@ -4,16 +4,17 @@ import {
   View,
   NativeModules,
   TouchableOpacity,
-  Button
+  Button,
 } from "react-native";
 import { ScrollView, Dimensions } from "react-native";
 import styles from "./styles.jsx";
+import Mediciones from "./mediciones";
 
 const { width } = Dimensions.get("window");
 
 export default class Actividades extends React.Component {
   state = {
-    filePath: ""
+    filePath: "",
   };
 
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Actividades extends React.Component {
       clearAverage: false,
       FcK1: 0,
       FcK2: 0,
-      FcK3: 0
+      FcK3: 0,
     };
   }
 
@@ -47,7 +48,7 @@ export default class Actividades extends React.Component {
       }
     );
     this.setState({
-      bluetoothSearchInterval: setInterval(this.getDeviceInfo, 5000)
+      bluetoothSearchInterval: setInterval(this.getDeviceInfo, 5000),
     });
   };
 

@@ -7,7 +7,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableWithoutFeedback,
-  View
+  View,
 } from "react-native";
 import { Chevron } from "react-native-shapes";
 //import { Ionicons } from "@expo/vector-icons";
@@ -17,20 +17,20 @@ import RNPickerSelect, { defaultStyles } from "react-native-picker-select";
 const alimentos = [
   {
     label: "Huevo",
-    value: 74
+    value: 74,
   },
   {
     label: "Pollo 100 g",
-    value: 195
+    value: 195,
   },
   {
     label: "Tortilla de maíz",
-    value: 52
+    value: 52,
   },
   {
     label: "Pizza una rebanada",
-    value: 298
-  }
+    value: 298,
+  },
 ];
 
 export default class App extends React.Component {
@@ -42,7 +42,7 @@ export default class App extends React.Component {
       favSport0: null,
       favSport1: null,
       lastTextInput: null,
-      favSport5: null
+      favSport5: null,
     };
 
     this.state = {
@@ -50,13 +50,13 @@ export default class App extends React.Component {
         {
           label: "1",
           value: 1,
-          color: "orange"
+          color: "orange",
         },
         {
           label: "2",
           value: 2,
-          color: "green"
-        }
+          color: "green",
+        },
       ],
       favSport0: undefined,
       favSport1: undefined,
@@ -67,7 +67,7 @@ export default class App extends React.Component {
       favSport5: null,
       favNumber: undefined,
       calRestantes: 2000,
-      conCalorias: 0
+      conCalorias: 0,
     };
 
     this.InputAccessoryView = this.InputAccessoryView.bind(this);
@@ -83,7 +83,7 @@ export default class App extends React.Component {
           onPress={() => {
             this.setState(
               {
-                favSport5: this.state.previousFavSport5
+                favSport5: this.state.previousFavSport5,
               },
               () => {
                 this.inputRefs.favSport5.togglePicker(true);
@@ -96,7 +96,7 @@ export default class App extends React.Component {
             <Text
               style={[
                 defaultStyles.done,
-                { fontWeight: "normal", color: "red" }
+                { fontWeight: "normal", color: "red" },
               ]}
             >
               Cancel
@@ -122,7 +122,7 @@ export default class App extends React.Component {
     const placeholder = {
       label: "Tipo de alimentos...",
       value: null,
-      color: "#9EA0A4"
+      color: "#9EA0A4",
     };
     //this.state.conCalorias = this.state.conCalorias + this.state.favSport0;
     return (
@@ -133,7 +133,7 @@ export default class App extends React.Component {
         >
           <Text>Peso</Text>
           <TextInput
-            ref={el => {
+            ref={(el) => {
               this.inputRefs.firstTextInput = el;
             }}
             returnKeyType="next"
@@ -150,7 +150,24 @@ export default class App extends React.Component {
           />
           <Text>Edad</Text>
           <TextInput
-            ref={el => {
+            ref={(el) => {
+              this.inputRefs.firstTextInput = el;
+            }}
+            returnKeyType="next"
+            enablesReturnKeyAutomatically
+            onSubmitEditing={() => {
+              this.inputRefs.favSport0.togglePicker();
+            }}
+            style={
+              Platform.OS === "ios"
+                ? pickerSelectStyles.inputIOS
+                : pickerSelectStyles.inputAndroid
+            }
+            blurOnSubmit={false}
+          />
+          <Text>IMC</Text>
+          <TextInput
+            ref={(el) => {
               this.inputRefs.firstTextInput = el;
             }}
             returnKeyType="next"
@@ -188,9 +205,9 @@ export default class App extends React.Component {
           <RNPickerSelect
             placeholder={placeholder}
             items={alimentos}
-            onValueChange={value => {
+            onValueChange={(value) => {
               this.setState({
-                favSport0: value
+                favSport0: value,
               });
             }}
             onUpArrow={() => {
@@ -201,7 +218,7 @@ export default class App extends React.Component {
             }}
             style={pickerSelectStyles}
             value={this.state.favSport0}
-            ref={el => {
+            ref={(el) => {
               this.inputRefs.favSport0 = el;
             }}
           />
@@ -223,7 +240,7 @@ const pickerSelectStyles = StyleSheet.create({
     borderColor: "gray",
     borderRadius: 4,
     color: "black",
-    paddingRight: 30 // to ensure the text is never behind the icon
+    paddingRight: 30, // to ensure the text is never behind the icon
   },
   inputAndroid: {
     fontSize: 16,
@@ -233,6 +250,6 @@ const pickerSelectStyles = StyleSheet.create({
     borderColor: "purple",
     borderRadius: 8,
     color: "black",
-    paddingRight: 30 // to ensure the text is never behind the icon
-  }
+    paddingRight: 30, // to ensure the text is never behind the icon
+  },
 });
