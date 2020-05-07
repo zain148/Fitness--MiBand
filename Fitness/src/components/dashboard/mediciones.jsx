@@ -5,7 +5,8 @@ import {
   NativeModules,
   TouchableOpacity,
   PermissionsAndroid,
-  Platform
+  Platform,
+  Image,
 } from "react-native";
 import { ProgressChart } from "react-native-chart-kit";
 import { ScrollView, Dimensions } from "react-native";
@@ -28,7 +29,7 @@ export default class Mediciones extends React.Component {
       isConnectedWithMiBand: false,
       isHeartRateCalculating: false,
       bluetoothSearchInterval: null,
-      hrRateInterval: null
+      hrRateInterval: null,
     };
   }
 
@@ -40,7 +41,7 @@ export default class Mediciones extends React.Component {
       }
     );
     this.setState({
-      bluetoothSearchInterval: setInterval(this.getDeviceInfo, 5000)
+      bluetoothSearchInterval: setInterval(this.getDeviceInfo, 5000),
     });
   };
 
@@ -130,6 +131,7 @@ export default class Mediciones extends React.Component {
 
     return (
       <View style={styles.container}>
+        <Image source={require("./assets/react.png")} />
         <ScrollView>
           {/*Latidos de corazón */}
           <View style={styles.package}>
@@ -155,7 +157,7 @@ export default class Mediciones extends React.Component {
                   <Text style={styles.sensorField}>{promedio}</Text>
                 </View>*/}
 
-          <View></View>
+          <View />
 
           {/*------------------Gráfica-------------------------*/}
           <View>
@@ -175,8 +177,8 @@ export default class Mediciones extends React.Component {
               color: (opacity = 1) => `rgba(51, 175, 255, ${opacity})`,
               style: {
                 marginVertical: 8,
-                borderRadius: 16
-              }
+                borderRadius: 16,
+              },
             }}
           />
 

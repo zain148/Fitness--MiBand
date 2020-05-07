@@ -7,6 +7,8 @@ import {
   ScrollView,
   StyleSheet,
   TouchableWithoutFeedback,
+  TouchableOpacity,
+  Image,
   View,
 } from "react-native";
 import { Chevron } from "react-native-shapes";
@@ -46,6 +48,9 @@ export default class App extends React.Component {
     };
 
     this.state = {
+      peso: null,
+      estatura: null,
+      total: null,
       numbers: [
         {
           label: "1",
@@ -76,6 +81,15 @@ export default class App extends React.Component {
     this.state.conCalorias = this.state.conCalorias + this.state.favSport0;
     this.state.calRestantes -= this.state.conCalorias;
   };
+
+  IMC = () => {
+    const { peso, estatura } = this.state;
+    //const estatura2 = Number(estatura);
+    const altura = Number(estatura) * Number(estatura);
+    const total = Number(peso) / Number(altura);
+    this.setState({ total: total });
+  };
+
   InputAccessoryView() {
     return (
       <View style={defaultStyles.modalViewMiddle}>
@@ -133,55 +147,35 @@ export default class App extends React.Component {
         >
           <Text>Peso</Text>
           <TextInput
-            ref={(el) => {
-              this.inputRefs.firstTextInput = el;
-            }}
-            returnKeyType="next"
-            enablesReturnKeyAutomatically
-            onSubmitEditing={() => {
-              this.inputRefs.favSport0.togglePicker();
-            }}
             style={
               Platform.OS === "ios"
                 ? pickerSelectStyles.inputIOS
                 : pickerSelectStyles.inputAndroid
             }
-            blurOnSubmit={false}
+            placeholder="Peso"
+            values={this.state.peso}
+            onChangeText={(text) => this.setState({ peso: text })}
           />
           <Text>Edad</Text>
           <TextInput
-            ref={(el) => {
-              this.inputRefs.firstTextInput = el;
-            }}
-            returnKeyType="next"
-            enablesReturnKeyAutomatically
-            onSubmitEditing={() => {
-              this.inputRefs.favSport0.togglePicker();
-            }}
             style={
               Platform.OS === "ios"
                 ? pickerSelectStyles.inputIOS
                 : pickerSelectStyles.inputAndroid
             }
-            blurOnSubmit={false}
+            placeholder="Estatura"
+            values={this.state.estatura}
+            onChangeText={(text) => this.setState({ estatura: text })}
           />
-          <Text>IMC</Text>
-          <TextInput
-            ref={(el) => {
-              this.inputRefs.firstTextInput = el;
-            }}
-            returnKeyType="next"
-            enablesReturnKeyAutomatically
-            onSubmitEditing={() => {
-              this.inputRefs.favSport0.togglePicker();
-            }}
-            style={
-              Platform.OS === "ios"
-                ? pickerSelectStyles.inputIOS
-                : pickerSelectStyles.inputAndroid
-            }
-            blurOnSubmit={false}
-          />
+          <View style={styles.spacing} />
+
+          <TouchableOpacity
+            style={styles.buttonEnabled}
+            onPress={this.IMC}
+            //onPress={this.getAverage}
+          >
+            <Text style={styles.buttonText}>IMC: {this.state.total}</Text>
+          </TouchableOpacity>
 
           <View style={styles.package}>
             <Text style={styles.sensorField}>Calorias Restantes:</Text>
