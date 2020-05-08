@@ -43,7 +43,7 @@
     "react-navigation-material-bottom-tabs": "^0.1.2",
     "react-navigation-stack": "^1.10.3",
     "react-timer-mixin": "^0.13.4",
-    "yarn": "^1.19.2"
+    "yarn": "^1.22.0"
   },
   "devDependencies": {
     "@babel/core": "7.5.5",
