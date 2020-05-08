@@ -48,9 +48,14 @@ export default class App extends React.Component {
     };
 
     this.state = {
+      nelPerro: true,
       peso: null,
       estatura: null,
       total: null,
+      calRestantes: 2000,
+      conCalorias: 0,
+      comida: 0,
+      chin: 0,
       numbers: [
         {
           label: "1",
@@ -71,15 +76,23 @@ export default class App extends React.Component {
       previousFavSport5: undefined,
       favSport5: null,
       favNumber: undefined,
-      calRestantes: 2000,
-      conCalorias: 0,
     };
 
     this.InputAccessoryView = this.InputAccessoryView.bind(this);
   }
   getCalorias = () => {
-    this.state.conCalorias = this.state.conCalorias + this.state.favSport0;
-    this.state.calRestantes -= this.state.conCalorias;
+    this.state.conCalorias = 0;
+    const conCalorias = this.state.conCalorias + this.state.comida;
+    this.state.calRestantes -= conCalorias;
+    const chin = 2000 - this.state.calRestantes;
+    this.setState({ conCalorias: conCalorias });
+    this.setState({ chin: chin });
+
+    if (this.state.calRestantes < 0) {
+      this.state.nelPerro = false;
+      this.setState({ calRestantes: 0 });
+      this.setState({ chin: 0 });
+    }
   };
 
   IMC = () => {
@@ -184,7 +197,7 @@ export default class App extends React.Component {
           <View paddingVertical={5} />
           <View style={styles.package}>
             <Text style={styles.sensorField}>Calorias Consumidas:</Text>
-            <Text style={styles.sensorField}>{this.state.conCalorias}</Text>
+            <Text style={styles.sensorField}>{this.state.chin}</Text>
           </View>
           <View style={styles.spacing} />
           <Button
@@ -201,23 +214,12 @@ export default class App extends React.Component {
             items={alimentos}
             onValueChange={(value) => {
               this.setState({
-                favSport0: value,
+                comida: value,
               });
-            }}
-            onUpArrow={() => {
-              this.inputRefs.firstTextInput.focus();
-            }}
-            onDownArrow={() => {
-              this.inputRefs.favSport1.togglePicker();
-            }}
-            style={pickerSelectStyles}
-            value={this.state.favSport0}
-            ref={(el) => {
-              this.inputRefs.favSport0 = el;
             }}
           />
           <View>
-            <Text>{this.state.favSport0} Kcal</Text>
+            <Text>{this.state.comida} Kcal</Text>
           </View>
         </ScrollView>
       </View>

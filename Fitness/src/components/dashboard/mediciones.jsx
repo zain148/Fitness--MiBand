@@ -131,7 +131,10 @@ export default class Mediciones extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Image source={require("./assets/react.png")} />
+        <Image
+          source={require("./assets/react.png")}
+          style={{ width: 40, height: 40 }}
+        />
         <ScrollView>
           {/*Latidos de corazón */}
           <View style={styles.package}>
